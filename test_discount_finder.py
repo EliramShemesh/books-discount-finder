@@ -1,9 +1,7 @@
-# test_discount_finder.py
-
 import pytest
 from discount_finder import DiscountFinder, Book
 
-# --- Unit Tests ---
+# Unit Tests
 
 def test_convert_rating():
     finder = DiscountFinder()
@@ -25,10 +23,7 @@ def test_book_repr():
     expected = "Test Book - £19.99 - 4 star(s)"
     assert repr(book) == expected
 
-# --- Integration Test ---
-# Marking the test as an integration test. You can run it with:
-#    pytest -m integration
-# or skip it during normal testing.
+# Integration Test
 
 @pytest.mark.integration
 def test_discount_finder_integration():
@@ -38,11 +33,9 @@ def test_discount_finder_integration():
     (so most books are considered 'discounted'), and ensures that some discounted
     books are found.
     """
-    # Using a higher threshold to capture more books for testing purposes.
     finder = DiscountFinder(price_threshold=50.0)
     try:
         finder.start()
-        # Check that we found at least one discounted book.
         assert len(finder.discounted_books) > 0
     finally:
         finder.close()
